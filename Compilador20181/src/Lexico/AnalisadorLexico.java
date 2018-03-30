@@ -5,6 +5,8 @@
  */
 package Lexico;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Joimar
@@ -21,6 +23,7 @@ public class AnalisadorLexico
     private final int status_comentario = 6;
     private final int status_delimitador = 7;
     private final int status_cadeia = 8;
+    private final int status_neutro = 9;
     
     private final String tipo_palavra_reservada = "Palavra Reservada";
     private final String tipo_id = "Identificador";
@@ -32,6 +35,32 @@ public class AnalisadorLexico
     private final String tipo_delimitador = "Delimitador";
     private final String tipo_cadeia = "Cadeia de Caracteres";
     
+   
+    private  ArrayList<Token> tokens;
     
+    private  ArrayList<Token> erros;
+    
+    
+     public boolean verificaPalavraReservada(String palavra)
+    {
+    
+        if(palavra.equals("const") || palavra.equals("var") || palavra.equals("struct") || palavra.equals("typedef") || 
+                palavra.equals("procedure") || palavra.equals("function") || palavra.equals("return") || palavra.equals("start") ||
+                palavra.equals("if") || palavra.equals("then") || palavra.equals("else") || palavra.equals("while")
+                || palavra.equals("scan") || palavra.equals("print") || palavra.equals("int") || palavra.equals("float") || palavra.equals("bool")
+                || palavra.equals("string") || palavra.equals("true") || palavra.equals("false") || palavra.equals("extends"))
+        {
+        
+            return true;
+        }
+        
+        else return false;
+    }
+     
+     public void analise(ArrayList<String> codigo)
+     {
+     
+         
+     }
     
 }

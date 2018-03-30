@@ -13,8 +13,8 @@ public class Token
 {
     private int linha;
     private String valor;
-    
-   Token(int linha, String valor)
+    private String tipo;
+   Token(int linha, String valor, String tipo)
    {
        this.linha = linha;
        this.valor = valor;

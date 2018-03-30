@@ -9,6 +9,39 @@ package Lexico;
  *
  * @author Joimar
  */
-public class Token {
+public class Token 
+{
+    private int linha;
+    private String valor;
     
+   Token(int linha, String valor)
+   {
+       this.linha = linha;
+       this.valor = valor;
+   }
+   
+   
+   public void setLinha(int linha)
+   {
+   
+       this.linha = linha;
+   }
+   
+   public int getLinha()
+   {
+       return linha;
+   }
+   
+   public void setValor(String valor)
+   {
+   
+       this.valor = valor;
+   }
+   
+   public String getValor()
+   {
+   
+       return valor;
+   }
+   
 }

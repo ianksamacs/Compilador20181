@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package compilador20181;
+package Main;
 
 /**
  *
  * @author Joimar
  */
-public class Compilador20181 {
+public class Main {
 
     /**
      * @param args the command line arguments

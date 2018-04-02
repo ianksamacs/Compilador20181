@@ -92,7 +92,7 @@ public class Arquivo
         else {
             
             for (Token token : tokens) { // Insere os tokens no arquivo de saída.
-          //COMENTEI ESSE SEMESTRE  gravar.println(token.getValor() + " " + token.getTipo() + " " + token.getLinha());
+            gravar.println(token.getValor() + " " + token.getTipo() + " " + token.getLinha());
         }
         }
         
@@ -101,7 +101,7 @@ public class Arquivo
             gravar.printf("nao ha erros lexicos\n");
         } else { // Se houver erros léxicos, os insere no arquivo de saída.
             for (Token erro : erros) {
-             //COMENTEI ESSE SEMESTRE   gravar.println(erro.getValor() + " " + erro.getTipo() + " " + erro.getLinha());
+                gravar.println(erro.getValor() + " " + erro.getTipo() + " " + erro.getLinha());
             }
         }
         arq.close();

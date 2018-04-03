@@ -35,13 +35,24 @@ public class AnalisadorLexico
     private final String tipo_delimitador = "Delimitador";
     private final String tipo_cadeia = "Cadeia de Caracteres";
     
-   
-    private  ArrayList<Token> tokens;
+    private ArrayList<String> codigo;
     
-    private  ArrayList<Token> erros;
+    private int status;
     
+    private final ArrayList<Token> tokens;
     
-     public boolean verificaPalavraReservada(String palavra)
+    private final  ArrayList<Token> erros;
+    
+    AnalisadorLexico(ArrayList<String> codigo)
+    {
+    
+        this.codigo = codigo;
+        
+        this.tokens = new ArrayList<>();
+        this.erros = new ArrayList<>();
+        this.status = status_neutro;
+    }
+    public boolean verificaPalavraReservada(String palavra)
     {
     
         if(palavra.equals("const") || palavra.equals("var") || palavra.equals("struct") || palavra.equals("typedef") || 
@@ -57,10 +68,20 @@ public class AnalisadorLexico
         else return false;
     }
      
-     public void analise(ArrayList<String> codigo)
-     {
+    
      
-         
-     }
+    public void analise()
+    {
+    
+        switch(status)
+        {
+        
+            case status_neutro:
+                
+                
+        
+        }
+    
+    }
     
 }

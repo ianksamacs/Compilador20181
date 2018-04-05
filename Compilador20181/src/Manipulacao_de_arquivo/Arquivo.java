@@ -33,7 +33,7 @@ public class Arquivo
      */
     public ArrayList<String> lerCodigos() {
         
-        File raiz = new File("src/entradas"); // Pasta com os códigos de entrada.
+        File raiz = new File("src/entradas/"); // Pasta com os códigos de entrada.
         ArrayList<String> codigos = new ArrayList<>(); // Nomes dos arquivos com os códigos de entrada.
         
         for (File f : raiz.listFiles()) { // Inserindo caminho dos códigos.
@@ -59,7 +59,7 @@ public class Arquivo
      */
     public ArrayList<String> lerCodigoFonte(String localFile) throws FileNotFoundException {
 
-        Scanner scanner = new Scanner(new FileReader("src/testes/in/" + localFile)); // Lendo o arquivo do código.
+        Scanner scanner = new Scanner(new FileReader("src/entradas/" + localFile)); // Lendo o arquivo do código.
         this.localFile = localFile; // Guarda o nome do arquivo de entrada para que o arquivo de saída tenha o "mesmo" nome.
         ArrayList<String> codigo = new ArrayList(); // Código obtido.
         while (scanner.hasNextLine()) { // Capturando as linhas do código.
@@ -82,7 +82,7 @@ public class Arquivo
      */
     public void escreverSaidaLexico(ArrayList<Token> tokens, ArrayList<Token> erros) throws IOException {
 
-        FileWriter arq = new FileWriter("src/testes/out/" + this.localFile + ".out", false); // Cria o arquivo de saída relacionado ao seu respectivo arquivo de entrada ("mesmo" nome). 
+        FileWriter arq = new FileWriter("src/saidas/" + this.localFile + ".out", false); // Cria o arquivo de saída relacionado ao seu respectivo arquivo de entrada ("mesmo" nome). 
 
         PrintWriter gravar = new PrintWriter(arq);
         if(tokens.isEmpty())

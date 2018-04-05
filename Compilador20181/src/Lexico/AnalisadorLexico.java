@@ -38,12 +38,15 @@ public class AnalisadorLexico
     private ArrayList<String> codigo;
     
     private int status;
+    private int linha = 0;
+    private int contador = 0;
     
     private final ArrayList<Token> tokens;
     
     private final  ArrayList<Token> erros;
+    private static final char EOF = '\0';
     
-    AnalisadorLexico(ArrayList<String> codigo)
+    public AnalisadorLexico()
     {
     
         this.codigo = codigo;
@@ -51,7 +54,22 @@ public class AnalisadorLexico
         this.tokens = new ArrayList<>();
         this.erros = new ArrayList<>();
         this.status = status_neutro;
+        
+        
     }
+    
+    public void direcionador(String palavra)
+    {
+        
+        if( (palavra.charAt(contador)>=65 && palavra.charAt(contador)<=90) || (palavra.charAt(contador)>=97 && palavra.charAt(contador)<=122) ) {status = status_id; verificaID(palavra);}
+        else if(palavra.charAt(contador)>=48 && palavra.charAt(contador)<=57 ) status = status_numero;
+        else if(palavra.charAt(contador)==43 || palavra.charAt(contador)==42 || palavra.charAt(contador)==45 || palavra.charAt(contador)==47) status = status_op_ari;
+        else if(palavra.charAt(contador)==61 || palavra.charAt(contador)==60 || palavra.charAt(contador)==62) status = status_op_relacional;
+        else if(palavra.charAt(contador)==33 || palavra.charAt(contador)==38 || palavra.charAt(contador)==124) status = status_op_logico;
+        
+        
+    }
+    
     public boolean verificaPalavraReservada(String palavra)
     {
     
@@ -68,19 +86,64 @@ public class AnalisadorLexico
         else return false;
     }
      
-    
-     
-    public void analise()
+    public void verificaID(String palavra)
     {
-    
-        switch(status)
+        String aux = new String();
+        boolean flag = true;
+        int i=0;
+        for(i=contador;i<palavra.length();i++)
         {
         
-            case status_neutro:
-                
-                
-        
+            aux += palavra.charAt(i);
         }
+        contador = i;
+        Token token = new Token(linha+1, aux, tipo_id);
+        tokens.add(token);
+        System.out.println("A SAIDA:  ");
+        System.out.println(tokens.get(0));
+    }
+     
+    public void analise(ArrayList<String> texto)
+    {
+        codigo = texto;
+        int teste = texto.get(linha).length();
+        
+           for(linha = 0; linha < codigo.size(); linha++)
+           {
+           
+                switch(status)
+                {
+        
+                    case status_neutro:
+                        direcionador(codigo.get(linha));
+                
+                    case status_id:
+                        //verificaID(codigo.get(linha));
+                
+                            
+                }
+               
+           
+            
+        }
+        
+        
+    
+       
+    
+    }
+    
+    public ArrayList<Token> getTokens()
+    {
+    
+        return tokens;
+    
+    }
+    
+    public ArrayList<Token> getErros()
+    {
+    
+        return erros;
     
     }
     
